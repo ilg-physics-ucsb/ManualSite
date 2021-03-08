@@ -198,17 +198,21 @@ h1::before, h2::before {
  
 
 #chatscreen{
-
   width:100%;
   height:calc(100% - 120px);
   background-color: #f0f0f0 !important;
   overflow: hidden;
   position: absolute;
   top:0px;
-  
 }
 
-#nectirbut{
+
+#nbutt{
+  font: 'Source Sans Pro'; 
+  font-weight: bold; font-size: larger; 
+  background-color: #4fa199!important; 
+  border:0px; text-align: center;width:100%;
+  display: block; color:white;
   padding-top: 10px;
   padding-bottom: 10px;
 }

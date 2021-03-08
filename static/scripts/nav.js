@@ -26,3 +26,23 @@ function init_nav() {
     }
 }
 
+function init_apps() {
+     fetch("integration.json")
+        .then(response => {
+            return response.json();
+        })
+        .then(data => stash(data));
+    function stash(linkdata) {
+
+        for (i = 0; i < linkdata.length; i++) {
+            if (linkdata[i]["name"] == "nectir") {
+                url=linkdata[i]["file"]
+                document.getElementById("nbutt").onclick= function() {
+                    window.open(url)
+                }
+                document.getElementById("chatframe").src=url
+            } 
+        }
+    }
+}
+
