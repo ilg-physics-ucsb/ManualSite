@@ -1,394 +1,558 @@
-# Lab 3: Position, Velocity, Acceleration, and Falling Objects
+# Lab 3: RC Circuit
 
----
-
-***@fa-thumb-tack@ Make sure to include all tables, plots, pictures, drawings, screenshots or anything else asked of you in the exercises in your report, as well as answers to all the questions.***
-
-***@fa-thumbs-up@ All responses and answers should contain the correct number of sig figs and should include units when needed.***
-
----
-
-### Getting Familiar 
-
-The Simulation 1 below demonstrates the free fall motion of a ball. The left hand side shows what the 
-  scene looks like to an onlooker: a ball falling straight towards the ground at increasing speed. The right 
-  hand side shows you what the respective "position v.s. time" curve would look like if you were to record this data.
-  To get a feel for the concepts in this lab, feel free to play with the sliders. Observe how increasing and decreasing
-  air resistance affects the shape of the graph! In this lab you will explore this phenomenon using your analytical and mathematical skills.
-	
-:::Figure:Simulation
-<iframe src="https://kapawlak.github.io/PhDemoJS/Apps/FreeFall/freefall_multi.html" width= "100%" height="800" style="border:none;"> </iframe>
+::: Materials
+- Wire Leads 
+- Breadboard 
+- Two 1-MΩ resistors 
+- One 100-μF capacitor
+- One 10-μF capacitor
+- A multimeter
+- Something to keep time
 :::
 
-# Introduction: Free fall in 1D
+# Circuit Elements and their Interactions
+We now move on to explore moving charges, *i.e.*, currents,  that are confined to wires. As you likely know, if there is a potential difference across a conducting wire, electrons (negatively charged) will move from low potential to high potential. The movement of electrons forms current. Current is defined as the rate at which charges move:
 
-For 1D motion of a body, we are typically concerned with three variables which characterize the trajectory:
-
-1. The *position*, $x(t)$, which tells you where in space the body is located at a given time
-2. The  *velocity*, $v(t)$ which tells you the speed and direction the object is traveling at a given time, and hence the *change* in the position
-3. The acceleration, $a(t)$, which accounts for the forces on the body through $F=ma$, and tells you the *change* in the velocity.
-   
-These three variables are interrelated, as each quantity tells you about the *change over time* of the previous.
-
-
-## 1. Motion with No Forces
-
-:::RFigure
-![](../imgs/nov_pos.gif)
-:::
-To make our discussion concrete, we should review some basic physics in the case that there are no forces acting on the body of interest. 
-
-
-Let's imagine that that at $t=0$, we have a ball at rest at a height $y_0= 25 m$. What is its position at $t=10$s? Since the ball is stationary --- otherwise, $v_0= 0$ m/s --- of course it will still be $y(10 s)=25 m$!
-
-
-
-Now we imagine that this ball is given an initial velocity $v_0 = + 10$ m/s by tossing it upwards, with no forces acting upon it (for example, in space).  Since no forces are acting on the ball, the *change* in the velocity must be zero, so $v(t) = v_0=10$m/s for all time.  Note that the time, $t$, does not appear in this equation!
-
-
-::::::Figure
-:::col l5 m5 s12
-![](../imgs/v10_pos.gif)
-:::
-:::col l7 m7 s12
-![](../imgs/v10_vel.png)
-:::
-####
-::::::
-
-Since the velocity tells you how an object's *position* is changing in time, and we know that the velocity in the absence of force is constant, we can say that the position of the ball will increase by $10$ meters per second that passes. From this, we deduce that at $t=10$s, the ball is now at $y(10 s) = y_0 + v_0 t=  25$m $+ 10$ m/s $\times 10$s = $125$ m. 
-
-Generally, in the absence of external forces, we can capture this relationship mathematically as:
-
+::: Equation currentcharge
 $$
-y(t) = v_0 t + y_0
-$$
-In plain English, the above mathematical sentence translates to: "The position of the ball at a given time is equal to the distance it travels per each unit of time (e.g. seconds), multiplied by the time that has passed, plus its original position."
-
-## 2. Motion Under Constant Acceleration
-Once we include external forces acting on a body, we now must think about how the velocity changes over time.
-
-Consider now that we repeat this experiment on the moon, so that our ball is accelerating toward the ground at approximately $a = -1.6$m/s$^2$
-
-Similar to our equation for change in position, our equation for velocity is now:
-
-$$
-v(t) = a t + v_0 
-$$
-
-::::::Figure
-
-:::col l6 m6 s12
-![](../imgs/acc_pos.gif)
-:::
-
-
-:::col l6 m6 s12
-![](../imgs/acc_vel.png)
-:::
-
-::::::
-
-So that at $t=10$, we can now calculate that our ball has a velocity of $v(10s) = -6$ m/s.
-
-This presents us with an issue when calculating the new position of our ball, however, since now the velocity is continually changing: our previous equation is no longer correct.
-
-Given the relationship between velocity and acceleration above, it is an exercise in calculus to show the following relationship is true:
-
-$$
-y(t) = \frac{1}{2} at^2 + v_0 t 
-+y_0
-$$
-
-
- Putting it all together, we have that $x(10 s) = 45$ m
-
-## 3. Motion of falling objects
-
-In the last example, we considered the motion of an object under constant acceleration due to gravity. In this lab, we will test the validity of this model under earth's gravity. 
-
-When dropped from the same height, which one of these objects &ndash; stone or feather &ndash; will hit the ground first? Most people will say, &ldquo;That depends.&rdquo; If this is done in a normal room , the stone wins, as your intuition may tell you. However,  if it is done in a *vacuum*, which contains no air, both hit the bottom at the same time! The question we would like to answer is: "How does the presence of the air change the equations of motion for falling objects"?
-
-In the next activity, you will watch videos of someone dropping a variety of balls from a sixth-floor walkway. For one drop, you will measure and record height and time data, and for the rest, you will be given the data. You will plot these data, and use your results to test the validity of one of the motion formulas, namely,
-
-:::Figure:Equation
-$$
-y(t) = y_0 + v_{0}t + \frac{1}{2} at^2
+I =  \frac{dQ}{dt}
 $$
 :::
 
-where y is the position, $v_{0y}$ the initial velocity, $a_{y}$ the acceleration, and t the time. In some of these examples, you may find that the data does not match the theoretical equation. It is your job to determine how and why these equations change using your sharp analytical skills.
+In this part of the lab, we will review the concepts and mathematical descriptions of the resistors and capacitors in an RC circuit. We will discuss how each element behaves in a circuit, and formulate an equation to model their behavior when connected together. We will also discuss the meaning of an equivalent circuit. 
 
 
-### General Properties of Motion Curves
+## Resistors and Ohm’s Law
 
-::::::RFigure
+Resistors -- as implied by their name -- resist charge flow. They convert some of the kinetic energy of electrons into *heat*. While all materials [fn]except those that obtain a *superconducting* state at very low temperatures[/fn] have resistance, resistors are specially constructed circuit components with known resistance values that are much higher than those of most metals, and have *Ohmic* behavior. 
 
-![The relationship between x and t is constant](../imgs/Constant.png)
+Ohmic  behavior means that the current, resistance, and potential difference across a resistor are related by Ohm’s Law:
 
-![The relationship between x and t is linear](../imgs/Linear.png)
-
-![The relationship between x and t is quadratic](../imgs/Quad.png)
-
-::::::
-
-
-Before you start the lab, we have one last theoretical discussion: given a plot of position versus time, how can we make quantitative and qualitative statements about the physics of a falling object? 
-
-To answer this, we have two important statements to make from the discussion above:
-
-1. The velocity of an object at a certain time is the slope of the distance-time graph at that point.
-2. Similarly, the acceleration of an object at a certain point is the slope of the velocity-time graph at that point.
-
-
-
-
-
-Before discussing this, there are three plot shapes that are important to understand for this analysis: constant, linear, and curved. 
-
-Constant refers to a value that is not changing in time, a horizontal line, as can be seen in Figure 4 Part A. Linear refers to value that is changing with time but has a linear slope as seen in Figure 4 Part B. Curved refers to a value that is changing with time and is not linear as seen in Figure 4 Part C.
-
-The following figure from Hyperphysics shows the trajectory of a body whose acceleration is constant for each segment of time. Acceleration being constant for each segment is important for simplifying our plots.
-
-
-:::row
-####
+::: Equation ohm
+$$
+I =  \frac{V_R}{R}
+$$
 :::
 
-Part A shows the three plots unobstructed. Please notice how the velocity corresponds to each section of the position plot. Whenever the position plot is linear, the velocity is constant. Whenever the position plot is curved, the velocity is linear. If the position is curving upwards, the velocity is positive, if the position is curving downwards, the velocity is negative. The Acceleration plot corresponds to the velocity plot exactly the same way the velocity plot corresponds to the position plot.
+where $V_R$ is the voltage across the resistor in Volts (V), $R$ is the resistance of the resistor in Ohms (Ω), and $I$ is the current in the resistor in Amperes (A).
 
-::::::Figure
 
-:::col l6 m6 s12
-![Part A: Unobstructed view](../imgs/HP_MotionGraphs_Download.png)
-Part A
-:::
-:::col l6 m6 s12
-![](../imgs/HP_MotionGraphs_Annotated.png)
-Part B
+
+
+## Capacitors
+
+::: RFigure platecap m
+![Skematic of a simple parallel plate capacitor](../imgs/Lab3/1.png)
 :::
 
-::::::
+A capacitor is a device that stores energy by separating opposite charges across a very thin layer of insulating material, causing a large potential difference between the charged areas. You have likely learned about parallel plate capacitors, like that in [Fi](#Fi-platecap). While this is a very simplistic model of how most capacitors work, the basic functionality is the same: by connecting a capacitor to a battery source, a capacitor collects opposite charges and stores the energy as an electrostatic field in the region between them.
 
 
-Part B indicates points on the plots which correspond to the description of Part A. Please study the plots and notes in Part B to understand how they relate.
 
-:::::: Exercise
-Now that you have gained familiarity with position, velocity, and acceleration plots we can do analysis. In this exercise you will take a new position plot and create sketches of the velocity and acceleration plots. Please see Figure 6 below.
+In the case of a parallel plate capacitor, the voltage across a capacitor is directly related to the amount of charge on the plates. A larger amount of charge results in a larger potential difference across the capacitor. The relation between the voltage across, and the amount of charges on, the capacitor is given by
+
+::: Equation
+$$
+V_C =  \frac{Q}{C}
+$$
+:::
+
+where $Q$ is the charge in Coulombs (C), $C$ is the capacitance in Farads (F), and $V_C$ is the voltage across the capacitor in Volts (V).
+
+
+## Adding Elements to a Circuit
+### Capacitor Dynamics
+First, let&rsquo;s understand how capacitors in a circuit behave. Using the definition of current in [Eq](#Eq-currentcharge), we have
+
+::: Equation cap1
+$$
+I =  \frac{d(CV_C)}{dt} = C \frac{dV_C}{dt}
+$$
+:::
+
+which relates the current into a capacitor to the rate of change of the voltage. Note that it takes some time to build up charges. So the voltage across a capacitor cannot instantaneously increase. 
+
+
+It may be more helpful to rearrange this equation in the following way:
+
+::: Equation cap2
+$$
+\frac{dV_C (t)}{dt} = \frac{I(t)}{C}
+$$
+:::
+
+Here we see that the *change in the voltage across the capacitor* at any time is equal to the current divided by the capacitance. This doesn&rsquo;t mean that a capacitor can charge forever; recall that *the current itself* is generated by a potential difference across a wire. As the capacitor acquires charge, the potential difference between the capacitor and source monotonically decreases until *no current flows*, *i.e.*, $\frac{dV_C}{dt} = \frac{0}{C}=0$.
+
+
+
+If we remove the power source (*e.g.*, turn off the power block), then the potential difference between the capacitor and ground reverses, so that charges flow *out of the capacitor* following the same equation[fn].Note that since the direction of the potential difference changes, $I(t)$ picks up a negative sign![/fn].
+
+### The Basic RC Circuit
+
+In a circuit with a highly conductive wire, these processes happen very quickly since charges are free to accelerate along the potential line with minimal resistance. In order to see this phenomenon on human timescales, we must add a resistor to our circuit.
+
+
+
+
+::: Figure rc
+![capacitor charge/discharge plot](../imgs/Lab3/2.png)
+:::
+
+Consider the circuit given in [Fi](#Fi-rc). Before the circuit is powered on, both the capacitor and resistor initially have 0 V across them. We know that the instant the the circuit is powered on, the resistor has a voltage of $V_0$, so by Ohm&rsquo;s law, the current is $I = V_0/R$. The capacitor, on the other hand, is only beginning to charge according to $\frac{dV}{dt} = \frac{I(t)}{C}$. 
+
+As charge flows through our resistor, the potential difference moves to the capacitive element. Since the total potential difference of the circuit measured across the battery is $V_0$, we know that:
+
+:::Equation constraint
+$$
+V_C +V_R = V_0
+$$
+::: 
+
+We start by using [Eq](#Eq-ohm) to substitute for $I(t)$ in [Eq](#Eq-cap1). We find that the voltages across the capacitor and resistor, at any time, are related by
+:::Equation vcvr
+$$
+ C \frac{dV_C (t)}{dt} = \frac{V_R(t)}{R} 
+$$
+:::
+
+We can now apply the constraint given in [Eq](#Eq-constraint) to eliminate $V_C(t)$ from the equation. Substituting $V_C(t) = V_0 - V_R(t)$, and noting that $V_0$ is a constant, and therefore its derivative is 0, we get:
+
+
+$$
+\begin{aligned}
+C \frac{dV_C (t)}{dt} &= C \frac{d(V_0 - V_R(t))}{dt} \\\\
+&= - C \frac{d V_R(t)}{dt}
+\end{aligned}
+$$
+
+giving us a differential equation in $V_R(t)$ only:
+
+:::Equation vrvr
+$$
+ C \frac{dV_R (t)}{dt} = - \frac{V_R(t)}{R} 
+$$
+:::
+
+This is a first order differential equation that may be integrated. First, move all of the $V_R$ terms to one side, and $dt$ to the other. 
+
+$$
+ \frac{dV_R}{V_R} = -\int_0^{t} \frac{1}{RC} dt
+$$
+
+Next, integrate from $(0,t)$, $V_R(t=0) = V_0$ to $V_R(t)$
+
+$$
+ \int_{V_0}^{V_R(t)}\frac{dV_R}{V_R} = -\int_0^{t} \frac{dt}{RC}
+$$
+
+The left-hand side of this equation is a common integral, which we leave as an exercise. The right-hand side contains only constants in the integrand. The result is therefore:
+$$
+ \ln (V_R(t)/V_0) = -\frac{t}{RC}
+$$
+
+Exponentiating both sides gives us our final result for the voltage across the resistor over time:
+
+:::Equation rcfinal
+$$
+V_R(t) =  V_0 e^{-\frac{t}{\tau} }
+$$ 
+:::
+Finally, plugging this into the constraint $V_0 = V_R +V_C$, we get the voltage across the capacitor:
+
+:::Equation cfinal
+$$
+V_C(t) = V_0 (1-e^{-\frac{t}{\tau} } )
+$$
+:::
+
+We have defined the **time constant**, $\tau \equiv RC$, in these two equations. This time constant is determined by the resistance and capacitance of the elements in your circuit.
+
+### Measuring the Time Constant
+
+As we near the end of our theoretical discussion, we will now describe how to actually measure the constant with the equipment you have available. A nice feature of [Eq](#Eq-rcfinal) is that the voltages across the respective elements take *special values* when $t=\tau$:
+
+:::Equation rcfinal-approx
+$$
+\begin{aligned}
+V_R(\tau) &=  V_0 e^{-\frac{\tau}{\tau} }\\\\
+   &=  V_0 \frac{1}{e}\\\\
+   &\approx 0.37  V_0
+\end{aligned}
+$$ 
+:::
+and, similarly 
+:::Equation rcfinal-approx
+$$
+\begin{aligned}
+V_C(\tau) &=  V_0 (1- e^{-\frac{\tau}{\tau} })\\\\
+   &=  V_0 (1- \frac{1}{e})\\\\
+   &\approx 0.63  V_0
+\end{aligned}
+$$
+:::
+
+This means that during the **charging cycle**, the time at which the voltage across your resistor or capacitor reaches $37$% and $63$% of the maximum, respectively, is a measure of $\tau$. 
+
+For technical reasons related to the multimeter, we will be measuring the voltage across the capacitor in this experiment. Since the capacitor takes a long time to charge, we will be interested in studying the **discharging cycle**. This is easier to work with since you know the voltage across the capacitor the moment you turn off the power, and you don&rsquo;t have to guess at what the maximum voltage is! You will work out the equation you need in [Qu](#Qu-check).
+
+## Equivalent Circuits
+
+Recall that for resistors in series, the equivalent resistance is given by
+
+::: Equation Rseries
+$$
+R_{eq} =  R_{1}+R_{2}+R_{3}
+$$
+:::
+And for resistors in parallel, the equivalent resistance is given by
+
+::: Equation Rparallel
+$$
+\frac{1}{R_{eq}} =  \frac{1}{R_{1}}+ \frac{1}{R_{2}}+ \frac{1}{R_{3}}
+$$
+:::
+
+In addition to calculating the time constant for different circuits, we will be wiring the capacitors in both series and parallel configurations. The equation for the equivalent capacitance for capacitors in series is
+
+::: Equation Cseries
+$$
+\frac{1}{C_{eq}} =  \frac{1}{C_1}+ \frac{1}{C_2}
+$$
+:::
+
+The equation for the equivalent capacitance for capacitors in parallel is
+
+::: Equation Cparallel
+$$
+C_{eq} =  C_1+C_2
+$$
+:::
+
+::: Question check1
+
+Check your understanding of the theory material by answering the following questions:
+1. A 5-kΩ resistor is placed in series with two 10-kΩ resistors in parallel. The entire circuit is connected to a power supply of 20 V. What is the voltage across each element?
+2. A 0.1-μF capacitor has 16 V across its terminals. How much charge does it hold?
+3. What is the current flowing into a 0.01-μF capacitor if the voltage across its terminals changes at a constant rate of 2 mV per second?
+:::
+
+:::Question check
+The equations given describe the behavior of a *charging* capacitor. In the following experiments, we will want to work with a discharging circuit since we will know the initial voltage across a charged capacitor.
+
+Imagine that you&rsquo;ve charged your capacitor to some voltage $V_{max}$ and then turned off the power source.
+1. After the power source has been switched off, what is the constraint on the voltages of the resistor and capacitor?
+2. Combining  [Eq](#Eq-cap1) and [Eq](#Eq-ohm) as before, we get [Eq](#Eq-constraint)
+$$
+C\frac{d V_C(t)}{dt} = \frac{V_R(t)}{R}
+$$
+
+Using the constraint from part (a), substitute the right-hand side of this equation so that the entire expression is only in terms of $V_C(t)$
+
+3. Integrate both sides of this expression to find the equation for $V_C(t)$
+
+4. What is the value of $V_C(t)$ when $t = \tau$?
+:::
+# Experiments
+In this lab we will measure the time constant, $\tau$, of four different circuit configurations. The procedure for each of these labs is fairly quick and virtually identical. After the initial identification of your circuit components and the set-up of your first circuit, you will only have to switch out elements and record new data for each exercise.
+
+## Pre-lab Set-up
+
+Even though the resistors and capacitors are labeled in the electronics kit, it&rsquo;s useful to learn how the resistance is color coded. It is recommended to double check the 5-band code to make sure the resistors you are using are correct for the lab, especially if you have removed them from their packaging already.
+
+::::::Hider Identifying Resistors
+Learning to read the code to identify resistors is a crucial skill in real laboratory work. Resistors are the small capsule-shaped elements with wires at either end. You should notice that each resistor has a set of four colored bands around its body. The order and color of these bands indicate the element&rsquo;s resistance and *tolerance* -- *i.e.*, its margin of error as a percent of the nominal value.
+
+In a 5-band resistor, the first four bands tell you the value of $R$, and the $5^{\rm th}$ band gives you the tolerance. To read your resistor, first you need to determine the correct reading direction. There should be a larger gap between the $4^{\rm th}$ and $5^{\rm th}$ (tolerance) bands, than there is between any other two bands.
+
+There are two ways you can use the colors to assign values -- either by using the lookup table below or by using an [online calculator](https://www.digikey.com/en/resources/conversion-calculators/conversion-calculator-resistor-color-code).
 
 :::Figure
-![](../imgs/PvTSketch.png)
+
+![](../imgs/Lab3/resistor-color-chart.png)
+
 :::
 
-The dashed lines indicate where the plot changes from one of our above mentioned plot shapes to another. 
+Prior to starting the experiments, you should find the resistors for this lab and double-check their resistance. For students with the RexQualis kit, in total, you should have 10-20 of the following:
 
-1. Make a sketch plot for velocity with dotted lines in the same positions. **A sketch is just a quick drawing to display the important features of a plot, e.g. linear, parabolic, or constant. You should label the axes, but you don't need a title.**
+- @fa-chevron-right@ 10/100/220/330 Ω Resistors
+- @fa-chevron-right@ 1/2/5.1/10/100 kΩ Resistors
+- @fa-chevron-right@ 1 MΩ Resistors
 
-2. Sketch the velocity curve for each segment in you skeleton plot.
-
-3. Do the same to make an acceleration plot. Please note you will now have to refer to the velocity plot instead of the position one.
-
-4. Describe the motion in words. What is happening to the object in each segment of time. 
-
-:::Note
-Make sure to take a picture of your sketch plots and include them in your report along with the description.
-:::
 
 ::::::
 
----
-# colecting the Data
+:::Hider Identifying Capacitors
+
+The capacitors, which are black cylindrical elements with wires coming from the bottom, are much easier to identify: simply read off the values printed on the side. You should find 10 of the following:
+
+- @fa-chevron-right@ 10/100 μF Electrolytic Capacitors
+- @fa-chevron-right@ 22 pF/ 100 nF Ceramic Capacitors
+
+Electrolytic capacitors are very different from their ceramic counterparts[fn]For detailed information please see [wikipedia](https://en.wikipedia.org/wiki/Electrolytic_capacitor)[/fn]. Rather than being made of either ceramic or plastic, the dielectric in an electrolytic capacitor consists of an oxide coating on its plates. This oxide coating is formed by the application of a voltage across the capacitor at the end of the manufacturing process. Because of this, electrolytic capacitors are **polarized**, meaning that they have designated positive and negative leads. Applying a potential across them in the wrong direction would result in reduction of the oxide dielectric to form the neutral metal and liberate oxygen. Eventually, this would create shorts between the plates of the capacitor, and increased pressure inside it, leading to explosive failure.
+:::Warning
+ When using electrolytic capacitors **please make sure that you respect the orientation** by checking for the + and - symbols on the shell. Inserting them with the wrong orientation can *destroy* the electrolyte, ruining the capacitor. Please make sure the "-" end is connected to the negative rail of your power.
+ <br>
+
+ <img src= "../imgs/Lab3/negcap.jpg" width="300px">
+:::
+
+The capacitors suppled by the RexQualis kit are manufactured by Hyncdz. You may assume that these capacitors have a 20% tolerance. If you are using a capacitor from a different manufacturer, especially if it is a different kind of capacitor, please look up the data sheet for the component.
 
 
-:::::: Exercise
+::::::Question
+In the following exercises, we will need:
+- 1-MΩ resistors 
+- 10 μF capacitors
+- 100 μF capacitors 
 
-In this section we will look at different balls dropped from the sixth floor walkway of Broida Hall. The four balls dropped in Video 1 are of varying sizes and weights. Figure 7 shows the balls which are dropped. 
+Using the tolerance, write down the values of these components with their *uncertainty* in the form:
+- ($1 \pm \delta_R$) MΩ
+- ($10 \pm \delta_C$) μF
+- ($100 \pm \delta_C$) μF
+
+Here $\delta$ should be an *absolute* uncertainty, not a percent. For example, if your tolerance was 1% on your 1-MΩ resistor, you would record the value as  ($1 \pm 0.01$) MΩ. For both capacitors, use the tolerance of 20% to calculate the uncertainty. 
+:::Note
+This interval that you calculated is the error associated with the component due to the manufacturing process. This means that your resistors and capacitors will never be exactly what they are labeled -- they will usually be within the interval. We will need to take these deviations into account when comparing our measurements to theory. 
+:::
+::::::
+
+
+
+Now let’s set up four RC circuits. For each setup, you will measure the time constant and compare it to the theoretical value.
+
+
+:::::::::Note
+
+
+It is recommended that you modify your multimeter leads to free up your hands. You can do this by cutting your solderless jumper wires, removing the insulation, wrapping the strands around the tip of a lead, and taping to secure. This lets you plug your multimeter directly into the breadboard.
+<img src="../imgs/Lab3/leads.jpg" height="200px">
+
+
+:::::::::
+
+
+## 1. A 10-μF capacitor and a 1-MΩ resistor in series
+
+::: Materials
+- Wire Leads and breadboard
+- One 1-MΩ resistor
+- One 10-μF capacitor
+- A multimeter
+- Something to keep time
+:::
+
+
+For the first exercise, we are going to place a 10-μF capacitor in series with a 1-MΩ resistor. In addition, we need to place a voltmeter across the capacitor in order to visualize both charge-up and discharge situations. In this lab, the multimeter is our voltmeter.
+
+::: Figure
+![setup](../imgs/Lab3/circuit1.png)
+:::
+
+Before starting the experiment, we will make some basic theoretical calculations for this circuit to calibrate our expectations. In addition to predicting the time constant we will observe, we will use the tolerances of our components to find our error interval. 
+:::::: Question theorytau
+1. Use the values of the resistor and capacitor to calculate the theoretical value of the time constant for this RC circuit. 
+2. Using the uncertainty bounds of the resistor and capacitor, calculate the error bound $\delta_\tau$  of this measurement. 
+
+Hint: To calculate the total uncertainty of a product of two independent variables, use the following formula:
+
+
+For a product
+$$
+\tau = RC
+$$
+
+The error bound, $\delta\tau$, of $\tau$ may be calculated as:
+:::Equation producterror
+$$
+\frac{\delta\tau}{\tau} \sqrt{ \Big(\frac{\delta R}{R}\Big)^2 + \Big(\frac{\delta C}{C}\Big)^2}
+$$
+:::
+
+You are not required to know how to derive this, but interested students can learn more about this formula in Taylor&rsquo;s excellent [Error Analysis Textbook](http://hep.ucsb.edu/courses/ph128_18f/Taylor.pdf)[fn]The formula is derived in section 2.9[/fn].
+
+3. Write your final result as $(\tau \pm \delta_\tau)$. The bounds you have calculated on $\tau$ are your expected error bounds. Based on the tolerances of your components, you would expect that even if an experiment were executed perfectly, your final result would typically end up somewhere in this interval because of the corresponding **uncertainty** in your components&rsquo; actual values.
+::::::
+
+:::::: Exercise ex1
+
+We will be using our wires, elements, multimeter and breadboard to create the circuit. The instructions here look long only because there is no elegant way to explain circuit construction in words. Feel free to check with the above circuit diagram while following the instructions. After you have set everything up, the wiring should make sense.
+
+Set-up:
+1. Set up the power supply and voltmeter.
+2. Insert the resistor and capacitor into the breadboard. Note that rows (horizontal) within a given column are connected to each other, so the resistor should end in the same row in which the capacitor starts, to ensure that they are connected together.
+3. Connect the voltmeter across the capacitor.
+
+This diagram shows how to connect elements in series and/or parallel. Note that all spots on the same row on breadboard are connected.
 
 :::Figure
-![](../imgs/Balls2.png)
-:::
 
-The pink dog ball is small but fairly weighty for its size. The basket ball is medium sized and also has decent weight to it. The volley ball is smaller than the basket ball and slightly lighter as well. The beach ball is by far the largest and the lightest. These four balls should give a wide range of masses and sizes for our data set. All four balls are dropped, however, you will only be taking data for the basket ball. The data on the other balls have been taken for you. We have annotated Video 1 for you with the height measurements and an embedded stopwatch. These will be useful tools for your data colection.
-
-:::Video
-
-
-<iframe src="https://www.youtube.com/embed/juYSrbM66b0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+![](../imgs/Lab3/board.jpg)
 
 :::
 
 
-1. Watch Video 1 and see how each ball falls to the ground.
-
-2. Take 10 data points by pausing the video and recording the distance from the top and the timestamp on the embedded stopwatch. 
-
-3. Place your recoded data point in a table with the headers "Time (s)" and "Y_Basket (m)."
-
-::::::
-
-You have now colected some data for a basketball falling from the sixth floor of Broida! As mentioned above, three other balls were dropped from the same point at Broida. Rather than have you repeat the same data colection we have colected data for you using a software called Tracker.
-
-Tracker allows us to monitor the location of the ball at every frame of the video which happens once every 1/30 seconds. This method has two advantages. 
-
-1. We are able to more precisely identify the location of the ball.
-2. We are able to colect many more data points.
-
-Below is a short video demonstrating how the Tracker software was used to colect data for the four drops.
-
-:::Video
-<iframe src="https://www.youtube.com/embed/hvwjn3tAtqc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-:::
-
-The data you will need is in Table 1 below, linked in a google sheet.
-
-:::Table
-
-| Ball Drop Data Set | 
-| -------- | 
-| [Link to Google Sheet](https://docs.google.com/spreadsheets/d/1XI2mEKyuVftiG0uhUlS6Iah3zZuiGx1tUE5g1-e0ZIw/edit?usp=sharing)    | 
-
-:::
-
----
-# Analyzing the Data
-
-:::::: Exercise
-1. Start by copying the data linked in Table 1 into separate spreadsheet. 
-2. Now you will insert your data you took for the basketball into the table and plot all four ball drops on one plot. For instructions on how to do this, watch the following video. 
-
-:::Video
-<iframe  src="https://www.youtube.com/embed/PT6GM85ut4I" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-:::
-::::::
-####
-::::::Exercise
-In this exercise you will start the analysis of the drops. 
-
-1. Start by just looking at your data. **Analyze it qualitatively by using the tools you learned in Part 1 of the lab.** Try to determine what parts of each drop are falling under constant acceleration or constant velocity.
-2. Notice how the Dog Ball, Basket Ball, and Volleyball all look very similar. The beach ball is quite different from the other three. Pick one of the three similar data sets and the beach ball and **sketch** a velocity vs time plot for both data sets on the same graph. **A sketch is just a quick drawing to display the important features of a plot, e.g. linear, parabolic, or constant. You should label the axes and the two lines, but you don't need a title. You shouldn't spend more than 5 minutes drawing this.**
-3. Using the velocity lines, translate the plot into a brief description  (one or two sentences) of the drop.
-4. Take a picture of your sketch and include it in your lab report. Also include your description.
-
-::::::
-####
-:::::: Exercise
-:::Note
-This exercise is designed to help you understand curve fitting. Nothing needs to be submitted for this exercise.
-:::
-
-In the next exercise, for each of the datasets, you will perform a polynomial fit of degree 2. This will draw a line of best fit by using a quadratic function. That is that it will attempt to fit the equation:
-
-:::Figure:Equation
-$$
-y = ax^2+bx+c
-$$
-:::
-
-The computer will adjust $a$, $b$, and $c$ to best fit the data provided. Let's start by understanding what $a$, $b$, and $c$.
-
-Equation 4 looks a lot like our kinematic equation for motion. Let's equate Equation 4 to the kinematic equation. We do this in Table 2 below. Each row starts by defining the variable. The next column has the symbol we use to represent the variable in the fit. The final column has the equivalent symbol used in the kinematic equation.
-
-:::Table
-| Variable Name | Fit Symbol | Kinematic Symbol |
-| -------- | -------- | -------- |
-| Time     | $x$     | $t$     |
-| Position | $y$    | $y$    |
-| Acceleration| $a$ | $\frac{1}{2}g$ |
-| Initial Velocity | b |  $v_0$ |
-| Initial Position | c | $y_0$
-:::
 
 
-:::Note
-** This is a critical concept that you understand before moving forward. Below are three questions. Read them and spend a few minutes trying to answer them for yourself. When you think you have the answers, click the link at the bottom to take you to the answers. **
+Once you have wired the circuit, you are ready to collect data. We will first collect data on the *discharging* cycle:
+
+5. Turn on your circuit and fully charge your capacitor. You will know that the capacitor is fully charged when the reading on your multimeter stops changing.
+6. Once the reading stops changing, record the value you observe.
+7. Turn off your power block and start your timer.
+8. Record the time it takes for your capacitor to discharge to 37% of its maximum.
+
+After recording these values, we will now measure the time constant for the *charging* cycle. 
+
+9. Fully discharge your capacitor by momentarily connecting a wire across it.
+10. Reset your timer.
+11. Turn on your power block on and start your timer.
+12. Record the time it takes to charge to 63% of the maximum value recorded previously. 
 
 
-1. For an ideal fall (one that falls exactly like the kinematic equation describes), what should the value of $a$ in your fit be?
-
-2.  For drop like the ones in the video, where the ball is released from rest, what should the value of $b$ in your fit be?
-
-3. When the origin is defined at the release point of the ball, like it is in the video, what should the value of $c$ in your fit be?
-
-[Answers](https://docs.google.com/document/d/1xuPutEV_pWWWZYYmi8oLKV-G9F3q-pMSDv9B48brLp0)
-
-:::
-::::::
-
-::::::Exercise
-In this exercise we will be more quantitative about our analysis. We will perform fits and use those to aid our analysis. 
-
-1. For each of the drops perform a polynomial fit of degree 2. 
-2. Create a table to summarize the information from your fits. **Hint:** $a=\frac{1}{2}g$, so make sure to solve this for $g$ before putting it in your table. Your table should look like the following:
-
-:::Table
-
-
-| Parameters| Ideal Drop | Dog Ball | Basketball | Volleyball | Beach Ball|
-| -------- | -------- | -------- | -- | -- | -- |
-| Gravitational Accel. [g] ($m/s^2$)     |      |      |   |   | |
-| Initial Velocity  ($m/s$)   |      |      |   |   | |
-| Initial Position    ($m$) |      |      |   |   | |
-
-:::
-
-3. Calculate the percent discrepancy of the acceleration from ideal for each of the four drops. You can do this in a spreadhseet if you'd like but please show your work for **one** of the calculations. 
-
-:::Question 
-1. What is the cause of this systematic error in the measurement of $g$?
-
-2. Based on the picture of the balls, and what you know about the balls generally, why do you think the systematic error is different for the different balls? 
-:::
-
-4. Now let's look more closely at the initial velocity and intital position for the different drops. Do you notice how as the drops getting further from ideal the initial velocity and the inital position get further from ideal as well?
-
-:::Question
-1. What is the percent difference in initial velocity of the beach ball and the basketball?
-
-2. What is the percent difference in initial position of the beach ball and the basketball?
-:::
-
-The lower percent error in the value of $g$ from the basketball indicates that it has less systematic error, or that it is a better representation of our model (objects falling under constant acceleration). The large percent difference the beach ball has in the initial velocity and initial position with the basketball, combined with the larger percent discrepancy in the value of $g$ for the beach ball, hints that the beach ball strongly doesn't follow the constant acceleration model.
 
 ::: Question
-If the beach ball isn't falling under constant acceleration, what model might it be falling under?
+What are the values you calculated from the charge and discharge curves? Are they close? Is it sufficient to measure $\tau$ from only one of the curves? Explain your reasoning.
 :::
-
-5. Create one more plot of only the beach ball falling, but only use one second of data near the end. Somewhere it looks most linear. 
-6. Perform a linear fit on this data.
 
 ::: Question
-1. What is the slope of the line?
+1. What is the average experimental value of $\tau$ that you measured? Call this $\tau_{measured}$
 
-2. What does the slope represent?
+2. Calculate the discrepancy with the theoretical value that you calculated in [Qu](#Qu-theorytau). The discrepancy is defined by the quantity 
+$$
+\text{discrepancy} = |\tau_{theoretical} - \tau_{measured} |
+$$
+
+3. Is the discrepancy smaller than your error bounds? If not, propose some reasons for this: describe possible sources of systematic error, *e.g.*, external factors like humidity or poor contact, that might lead to shorter or longer discharge times, dying batteries, inaccurate timing.
+
+:::
+::::::
+
+## 2. A 10-μF capacitor and two 1-MΩ resistors in series
+
+::: Materials
+- Wire Leads and breadboard
+- Two 1-MΩ resistor
+- One 10-μF capacitor
+- A multimeter
+- Something to keep time
 :::
 
+:::Figure 
+![setup](../imgs/Lab3/circuit2.png)
+:::
+
+
+
+:::::: Exercise
+Repeat the **discharging cycle** described in [Ex](#Ex-ex1) with two 1-MΩ resistors connected in series. This is now a new circuit with a new time constant.
+
+::: Question
+1. Calculate the equivalent resistance of this circuit and its error, $(R_{eq}\pm \delta R_{eq})$
+
+Hint: The error of a sum of independent variables
+ $$
+    X_{eq} = X_1 + X_2
+ $$
+  has the formula
+
+$$
+\delta{X_{eq}} = \sqrt{(\delta{X_1})^2 + (\delta{X_2})^2}
+$$
+
+2. Calculate the theoretical value of the time constant and its error, $(\tau \pm \delta\tau)$ for this RC circuit. 
+3. Calculate your discrepancy and compare it to your error bounds, discussing possible sources of systematic error.
+:::
 
 ::::::
 
-# Conclusion
+## 3. A 10-μF capacitor, a 100-μF capacitor, and a 1-MΩ resistor in series
+::: Materials
+- Wire Leads and breadboard
+- One 1-MΩ resistor
+- One 10-μF capacitor
+- One 100-μF capacitor
+- A multimeter
+:::
 
-:::Exercise
-Write a brief conclusion summarizing the important points of this lab.
+
+:::Figure
+![setup](../imgs/Lab3/circuit3.png)
+:::
+
+
+:::::: Exercise
+Repeat the **discharging cycle** in [Ex](#Ex-ex1) by adding a 100-μF capacitor in series in the circuit. You need to make sure that the voltmeter will be measuring the voltage across **both** capacitors.
+
+::: Question
+1. Calculate the equivalent capacitance of this circuit and its error, $(C_{eq}\pm \delta C_{eq})$
+
+Hint: The error for a variable 
+$$
+X_{eq} = \Big( \frac{1}{X_1} + \frac{1}{X_2}\Big)^{-1}
+$$
+Is given by:
+$$
+\Big(\frac{\delta{X_{eq}}}{X_{eq}^2}\Big)^2 = \Big(\frac{\delta{X_{1}}}{X_{1}^2}\Big)^2+\Big(\frac{\delta{X_{2}}}{X_{2}^2}\Big)^2
+$$
+
+2. Calculate the theoretical value of the time constant and its error, $(\tau \pm \delta\tau)$ for this RC circuit. 
+3. Calculate your discrepancy and compare it to your error bounds, discussing possible sources of systematic error.
+:::
+::::::
+
+## 4. A 10-μF capacitor and a 100-μF capacitor in parallel, in series with two parallel 1-MΩ resistors
+::: Materials
+- Wire Leads and breadboard
+- Two 1-MΩ resistor
+- One 10-μF capacitor
+- One 100-μF capacitor
+- A multimeter
 :::
 
 
 
-::::::row w3-center w3-card-2 w3-flat-clouds
-### **In this lab, there were:**
-:::col l6 m6 s12
- @fa-question-circle qtotal w3-hover-shadow@ 
+
+::: Figure
+![setup](../imgs/Lab3/circuit4.png)
 :::
-:::col l6 m6 s12
- @fa-pencil-square-o etotal w3-hover-shadow@
+:::::: Exercise
+Repeat the **discharging cycle** in [Ex](#Ex-ex1) by connecting two capacitors in parallel, and two resistors in parallel, and the two components in series in the circuit. Make sure the voltmeter  is measuring the voltage across **both** capacitors.
+
+::: Question
+1. Calculate $(R_{eq} \pm \delta R)$ and $(C_{eq} \pm \delta C)$ for this circuit
+2.  Calculate the theoretical value of the time constant and its error, $(\tau \pm \delta\tau)$ for this RC circuit.
+3. Calculate your discrepancy and compare it to your error bounds, discussing possible sources of systematic error.
 :::
-### **@fa-hand-o-right@ Please be sure to complete all questions and exercises @fa-hand-o-left@**
 ::::::
 
 
 
 
+# Write-up
+
+###  **@fa-hand-o-right@  Instructions :**
+ #### **1. Answer all questions clearly, showing your work where appropriate.**
+ #### **2. Starting on a separate page:** 
+  - Write a short summary (~1 page, single spaced) describing RC circuits, how you measured the time constant, and any important observations. 
+  - In this summary, be sure to **summarize your results** and **reasons why you believe your data are precise and accurate**. If you do not think your data are accurate, explain why, and how this could be fixed in a future lab.
+
+ #### **3. Additional Information:**
+ - You should attach images of your plots,  data, and setup -- doing so may allow you to regain partial or full credit even if your experiment fails.
+ 
+ ::::::Summary
+ :::Hider Lab Submission
+  <iframe id="contentframe" width="100%" src="https://gauchospace.ucsb.edu/courses/mod/lti/launch.php?id=6131271&triggerview=0" allow="microphone https://coursekit.google.com; camera https://coursekit.google.com; geolocation https://coursekit.google.com; midi https://coursekit.google.com; encrypted-media https://coursekit.google.com;" allowfullscreen="1" style="height: 500px;"></iframe>
+ :::
+ ::::::
 
 
+# Feedback
 
+Any feedback you choose to give will be used to improve labs this quarter! Feedback is not required on all questions. If you&rsquo;d like just to leave some comments, scroll to the bottom of the form.
+::: Hider Open Feedback Form
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfXZOfjBgVkho3_6_UGzAmWl72t3sh_TwCU2Zrg0QfaBnS8wg/viewform?embedded=true" width="100%" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+:::
+
+<br>
+<br>
+<br>
+<br>

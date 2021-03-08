@@ -8,7 +8,6 @@ body{
     --primary-font:#fff;
     --primary-light:#c0e7df;
     --primary-light-font:#000;
-    --primary-med:#4fa199;
     --primary-dark:#326964;
     --primary-dark-font:#fff;
 
@@ -88,30 +87,31 @@ body {
     background-attachment: fixed;
 }
 
-/*headers*/
-h1 {
-    color: var(--primary)!important;
-    font-size: 225%;
-    border-bottom: rgb(202, 201, 201) solid 1px;
-  }
-h2{
-    color: black!important;
-    font-size: 175%;
-  }
-/*sidebar buttons*/
-#collapsible {
-    background-color:var(--primary)!important;
-}
-
-
 /* Maincontent background is transparent */
-#mdcontent{
-    background-color: rgba(255, 255, 255, 0.75);
+#mdcontent {
+    background-color: rgba(255, 255, 255, 0.85);
 }
+
+#mdcontent > p{
+
+    line-height:1.8!important;
+
+}
+
+#mdcontent > ol{
+
+   margin-inline-start: 5em;
+   margin-inline-end: 5em;
+   line-height: 1;
+
+}
+
+.tab { text-indent:40px }
 /* Materials */
 
 .Materials{
     background-color: white;
+    float:none!important;
 }
 .Materials header{  
     background-color: var(--primary);
@@ -144,16 +144,6 @@ h2{
     color:var(--l3-font);   
 } 
 
-.Question{
-    background-color: var(--primary)!important;
-    color: white;
-   }
-  .Question::before {
-
-    background-color:var(--primary-med)!important;
-
-  }
-
 /*********************************************************************************/
 /* Card Settings */
 
@@ -167,12 +157,12 @@ h2{
 
 .Exercise header, .Exercise footer{
     background-color: var(--l3-bg);
-    color: var(--l3-font);
+    color: var(--l2-font);
 }
 
 /* Simulation Card */
 .Simulation{
-    /* background-color:var(--primary-light); */
+    background-color:var(--primary-light);
 }
 .Simulation .preview-hide{ /*Set the shaddow color the same*/
     --box-shadow-color: var(--primary-light)!important;
@@ -241,12 +231,15 @@ h2{
 .Fig {
     background-color: var(--l6-bg)!important;
     color:var(--l6-font);
-    font-family: var(--minor-font);
-    font-size: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 70%;
     text-align: center;
+ 
   }
 
-
+.Fig p{
+    line-height:1.2 !important;
+}
 
   .Fig>footer>h3{
     font-weight: var(--blurb-label-weight);
@@ -274,7 +267,12 @@ h2{
 /* Tables */
 
 .Table{
-    font-family: var(--table-font) 
+    font-family: var(--table-font);
+    min-width:300px; 
+}
+
+.Table table{
+    min-width:300px; 
 }
 
 .Table header{
@@ -314,7 +312,25 @@ tbody > tr:nth-child(odd){background-color:var(--l3-bg)!important}
     color: var(--primary-font);
     font-size: 100%!important;
   }
+.Hider li, .Hider ol{
+    text-align: left;
+}
 
+.Hider ul > li > ul > li::before{
+    content: '\f054   ';
+    font-family: FontAwesome!important;
+    font-size: 80%!important;
+  }
+.Hider  ul > li{
+    list-style-type: none;
+    font-size: 100%!important;
+  }
+
+.Hider  ul > li > ul{
+    list-style-type: none;
+    font-size: 80%!important;
+    line-height: 2;
+  }
 /*********************************************************************************/
 /* Animation -- set iteration to 0 to disable */
 
