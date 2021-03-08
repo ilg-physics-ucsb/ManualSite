@@ -312,7 +312,7 @@ function includeHTML(filenum = linkfile) {
     /*loop through a collection of all HTML elements:*/
     z = document.getElementById("mdcontent");
 
-    file = "../" + filenum + ".md"
+    file =  filenum + ".md"
 
     if (file) {
         /*make an HTTP request using the attribute value as the file name:*/
