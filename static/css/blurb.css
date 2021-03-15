@@ -9,13 +9,23 @@ ul, ol {
   padding-inline-start: 0.5em;
 }
 
+
+
 #mdcontent > ul, #mdcontent > ol {
   padding-inline-start: 3.5em;
+  line-height: 1.2;
 }
 
 
 
 
+.Hider  ul, .Hider  ol {
+  padding-inline-start: 3.5em;
+ 
+}
+.Hider li{
+  padding-top: 10px;
+}
 
 
 
@@ -482,49 +492,49 @@ ul, ol {
 
 .RFigure{ float: right;
  
-  margin-right: 0.4em !important;
-  margin-left: 0.8em !important;
+  margin: 2em !important;
+
  
 }
 
 .LFigure{ float: left;
  
-  margin-right: 0.8em !important;
-  margin-left: 0.4em !important;
+  margin: 2em !important;
+
  
 }
 
 .RFigure img, .LFigure img{
   display: block;
 }
-.xxs img{
+.xxs img, .xxs p{
   max-width:2.5em;
-  max-height:2.5em;
+
  }
 
- .xs img{
+ .xs img, .xs p{
   max-width:10em;
-  max-height:10em;
+
  }
  
-.s img{
+.s img, .s p{
   max-width:15em;
-  max-height:15em;
+  
   }
 
-.m img{
+.m img, .m p{
   max-width:20em;
-  max-height:20em;
+ 
 }
 
-.l img{
+.l img, .l p{
   max-width:25em;
-  max-height:25em;
+  
 }
 
-.xl img{
+.xl img, .xl p{
   max-width:40em;
-  max-height:40em;
+ 
 }
 .Fig img{
   object-fit: cover;
@@ -532,34 +542,7 @@ ul, ol {
   max-width:100%; 
 }
 }
- .xxs p{
-  max-width:2.5em;
- }
-
- .xs p{
-  max-width:10em;
-
- }
  
-.s p{
-  max-width:15em;
-
-  }
-
-.m p{
-  max-width:20em;
-
-}
-
-.l p{
-  max-width:25em;
-
-}
-
-.xl p{
-  max-width:40em;
-
-}
 
 
 

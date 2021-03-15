@@ -9,16 +9,13 @@
 - [c] Steel screw
 :::
 
-:::Card pink This is a title
-Blah
-:::
-
-
 # The Phyphox App
 
 
 :::RFigure Phyphox s
 ![The Phyphox Phone App in the iOS store](imgs/Lab0/phyphox.png)
+
+The Phyphox Phone App
 :::
 
 In this intro lab, we will learn how to use the Phyphox app to acquire data that we will later analyze. You can download the app from their [website](https://Phyphox.org/) or find it in the iOS/Google Play store. 
@@ -32,8 +29,9 @@ You are encouraged to play with Phyphox, explore its capabilities and the experi
 We will get familiar with the Phyphox app by investigating the external magnetic field of a magnet with your phone&rsquo;s magnetometer.
 However, we actually need to know where the magnetometer even is! [Fi](#Fi-typical-phone) shows an image of a &ldquo;typical&rdquo; phone with a multitude of sensors. Unfortunately, this layout varies among device brands, models and even *versions* as increasingly innovative integrated circuit boards are manufactured.
 
-::: LFigure typical-phone xs
+::: LFigure typical-phone s
 ![A Typical Phone with a vast array of sensors](imgs/Lab0/typicalphone.png)
+A Typical Phone with a vast array of sensors
 :::
 
 If we do not know the exact location of the magnetometer, it is difficult to make sense of magnetic field readings, whose strength varies with measurement distance. Our first task is, then, to find the location of the magnetometer on our phones. Since you will need to know this location for future labs, feel free to mark it with, for example, a small piece of tape.
@@ -162,7 +160,7 @@ Now let&rsquo;s measure the direction of magnetic field from the  magnet.
 :::
 
 ::: Figure phonaxes m
-![Label your axes, including sign](imgs/Lab0/phoneaxes.png)
+![Label your axes, including sign](imgs/phoneaxes.png)
 :::
 
 
