@@ -58,11 +58,11 @@ Figures and generally contain images. They are automatically numbered, nameable 
 
 ``` 
 ::: Figure optional-name optional-size
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 :::
 ``` 
 ::: Figure balls 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 :::
 
 To improve visual variety you can also make right and left floating figures, respectively. These will float to the right(left) of any text that *follows* it.
@@ -71,7 +71,7 @@ To improve visual variety you can also make right and left floating figures, res
 Right:
 ``` 
 ::: RFigure optional-name optional-size
-![This is a right floating image](../imgs/phyphox.png)
+![This is a right floating image](imgs/Lab0/phyphox.png)
 :::
 ``` 
 
@@ -92,7 +92,7 @@ The figure will not float next to this text because the text is placed above the
 <p style="color:gray">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
 
 ::: RFigure phyphox m
-![This is a right floating image](../imgs/phyphox.png)
+![This is a right floating image](imgs/Lab0/phyphox.png)
 :::
 
 It will, however, float to the right of text that follows. Floating figures are best used for tall images, or a figure containing multiple images.
@@ -103,9 +103,9 @@ It will, however, float to the right of text that follows. Floating figures are 
 
 
 ::: LFigure graphs xs
-![The relationship between x and t is constant](../imgs/Constant.png)
-![The relationship between x and t is linear](../imgs/Linear.png)
-![The relationship between x and t is quadratic](../imgs/Quad.png)
+![The relationship between x and t is constant](imgs/Lab0/phyphox.png)
+![The relationship between x and t is linear](imgs/Lab0/phyphox.png)
+![The relationship between x and t is quadratic](imgs/Lab0/phyphox.png)
 :::
 
 You might worry that the images appear too small when multiple are in a figure, but the website automatically compiles *modals*. These are frames that pop up to show full-size media when clicked. Go ahead and click on of the images.
@@ -125,12 +125,12 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 
 ```
 ::: Figure ball-o 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 **Original**
 :::
 ```
 ::: Figure ball-o 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **Original**
 :::
@@ -140,7 +140,7 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 
 ```
 ::: Figure ball-xs xs 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **xs**
 :::
@@ -148,7 +148,7 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 ```
 
 ::: Figure ball-xs xs 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **xs**
 :::
@@ -157,14 +157,14 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 
 ```
 ::: Figure ball-s s 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **s**
 :::
 ```
 
 ::: Figure ball-s s 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **s**
 :::
@@ -172,7 +172,7 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 ---
 ```
 ::: Figure ball-m m 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **m**
 :::
@@ -180,7 +180,7 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 ```
 
 ::: Figure ball-m m 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **m**
 :::
@@ -189,13 +189,13 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 
 ```
 ::: Figure ball-l l 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **l**
 :::
 ```
 ::: Figure ball-l l 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **l**
 :::
@@ -204,14 +204,14 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 ```
 
 ::: Figure ball-xl xl 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **xl**
 :::
 ```
 
 ::: Figure ball-xl xl 
-![This is an image](../imgs/Balls2.png)
+![This is an image](imgs/Lab1/crossproduct.png)
 
 **xl**
 :::
@@ -219,7 +219,7 @@ To ensure that Figures look nice on large screens, one can specify a maximum siz
 
 
 ### Columnation
-In order to accomodate a row of images, the site makes use of W3.CSS standard columnization. Each full figure generates a row div class containing 12 equally sized columns. These are visualized in the figure below
+In order to accommodate a row of images, the site makes use of W3.CSS standard columnization. Each full figure generates a row div class containing 12 equally sized columns. These are visualized in the figure below
 
 ::::::Figure
 
@@ -268,12 +268,12 @@ Within this, we can designate how many columns each part of the figure should ta
 ```
 ::::::Figure
 :::col l6
-![Part A: Unobstructed view](../imgs/HP_MotionGraphs_Download.png)
+![Part A: Unobstructed view](imgs/Lab1/crossproduct.png)
 
 Part A: This figure takes up 6 of 12 rows
 :::
 :::col l6 
-![](../imgs/HP_MotionGraphs_Annotated.png)
+![](imgs/Lab1/crossproduct.png)
 
 Part B:This figure takes up 6 of 12 rows
 :::
@@ -281,12 +281,12 @@ Part B:This figure takes up 6 of 12 rows
 ```
 ::::::Figure
 :::col l6
-![Part A: Unobstructed view](../imgs/HP_MotionGraphs_Download.png)
+![Part A: Unobstructed view](imgs/Lab1/crossproduct.png)
 
 Part A: This figure takes up 6 of 12 rows
 :::
 :::col l6 
-![](../imgs/HP_MotionGraphs_Annotated.png)
+![](imgs/Lab1/crossproduct.png)
 
 Part B:This figure takes up 6 of 12 rows
 :::
@@ -506,7 +506,7 @@ To nest elements, you must include additional colons for each level of nesting w
 In this exercise, you will do stuff.
 
 ::: Figure
-![explanatory image](../imgs/calibration.gif)
+![explanatory image](imgs/Lab1/crossproduct.png)
 :::
 
 ::::::Question
@@ -523,14 +523,14 @@ Look at the image below and write the first word that comes to mind
 In this exercise, you will do stuff.
 
 ::: Figure
-![explanatory image](../imgs/calibration.gif)
+![explanatory image](imgs/Lab1/crossproduct.png)
 :::
 
 ::::::Question
 Look at the image below and write the first word that comes to mind
 
 :::Figure
-![it dips](../imgs/dip_gif.gif)
+![it dips](imgs/Lab2/selectdata.png)
 :::
 ::::::
 :::::::::
@@ -603,7 +603,7 @@ Please turn in your report [here](https://gauchospace.ucsb.edu/courses/my/)
 
 
 # Test
-:::::: Exercise magnetic-field
+:::::: Exercise magnetic-field2
 Firstly, let's measure the direction of magnetic field from the  magnet.
 **Measurement steps:**
 1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
@@ -611,7 +611,7 @@ Firstly, let's measure the direction of magnetic field from the  magnet.
 3. Hold the magnet above the magnetomer, with one flat side facing up. Move it up and down above the magnetometer.
 4.  Now flip the magnet over, and repeat the motion.
 5.  Stop recording to view the collected data. 
-::: Simulation long-wire
+::: Simulation long-wire2
 <iframe src="https://kapawlak.github.io/PhDemoJS/Apps/BiotSavart_Current_Line/Biot_Savart.html" width= "100%" height="800" style="border:none;"></iframe>
 :::
 ::: Question
