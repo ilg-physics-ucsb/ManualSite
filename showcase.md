@@ -619,3 +619,25 @@ Firstly, let's measure the direction of magnetic field from the  magnet.
 2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
 :::
 ::::::
+
+
+::::::Figure
+Firstly, let's measure the direction of magnetic field from the  magnet.
+**Measurement steps:**
+1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
+2. Start recording. You should see some random fluctuations on the plot. 
+3. Hold the magnet above the magnetomer, with one flat side facing up. Move it up and down above the magnetometer.
+4.  Now flip the magnet over, and repeat the motion.
+5.  Stop recording to view the collected data. 
+::: Simulation long-wire2
+<iframe src="https://kapawlak.github.io/PhDemoJS/Apps/BiotSavart_Current_Line/Biot_Savart.html" width= "100%" height="800" style="border:none;"></iframe>
+:::
+::: Question
+1. Why does $B_z$ change when you move the magnet vertically?
+2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
+:::
+::::::
+
+# This is another part!
+
+does the text render inside or outside?

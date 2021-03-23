@@ -50,15 +50,10 @@ function collapsible(tokens, idx, regmatch, type) {
     if (tokens[idx].nesting === 1) {    // This places an opening tag
         label = md.utils.escapeHtml(m[1]).trim();
         if (label == '') {
-            label = 'unset_'+ unset_id
+            label = `unset_${unset_id}`
             unset_id++;
         }
-        return dv(['ac', type,'w3-card'],id=LTR + '_' + label) + 
-        '<input class="ac-input" id="L'+ LTR + '_' + label +
-        '" name="L'+LTR + '_' + label +
-        '" type="checkbox" /> <label class="ac-label" for="L' +LTR + '_' + label + '">'+
-        type
-        +'</label><article class="ac-text w3-container">'
+        return `${dv(['ac', type, 'w3-card'], id = LTR + '_' + label)}<input class="ac-input" id="L${LTR}_${label}" name="L${LTR}_${label}" type="checkbox" /> <label class="ac-label" for="L${LTR}_${label}">${type}</label><article class="ac-text w3-container">`
         
     } else {                                               // This places a closing tag
         return `</article></div>`
@@ -92,7 +87,7 @@ function hidernote(tokens, idx, type, extra = '') {
             +'</label><article class="ac-text w3-container">'
     } else {
         // This places a closing tag
-        return '</article></div>'  + spacer + "</div>"
+        return '</article></div></div>'  + spacer + "</div>"
     }
 }
 
