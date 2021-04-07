@@ -9,6 +9,7 @@ const prepad = '<div class="w3-col l2 m2 s12 placehold "> </div>'
 const postpad = '</div><div class="w3-col placehold l2 m2 s12 ">'
 const spacer = '<div class="w3-col l2 m2 s12 placehold "> </div>'
 var unset_id = 0
+var hider_id = 0
 
 //Helper functions//////////////////////////////////////////////////////////////////
 
@@ -80,15 +81,17 @@ function hidernote(tokens, idx, type, extra = '') {
     if (tokens[idx].nesting === 1) {
         label = md.utils.escapeHtml(m[1]).trim();
         return dv(['w3-row']) + spacer + dv(["w3-col", "s12 m8 l8", "w3-center"]) + dv(["w3-card", 'ac', type, extra]) +
-            ' <input class="ac-input" id=Hide_' + label +
-            ' name=Hide_' + label +
-            ' type="checkbox" /><label class="ac-label" for=Hide_' + label + '>'+
+            ' <input class="ac-input" id=Hide_' + hider_id +
+            ' name=Hide_' + hider_id +
+            ' type="checkbox" /><label class="ac-label" for=Hide_' + hider_id + '>'+
             label
             +'</label><article class="ac-text w3-container">'
     } else {
         // This places a closing tag
+        hider_id+=1;
         return '</article></div></div>'  + spacer + "</div>"
     }
+    
 }
 
 //Figure cards
