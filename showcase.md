@@ -580,7 +580,14 @@ Upwards! Or, more correctly, in the opposite direction of the gravitational forc
 
 :::
 
+::: Question
+with text that hangs out above?
 
+1. Why does $B_z$ change when you move the magnet vertically?
+2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
+3. Testing footnote with $\LaTeX m$ that adds span. [fn] This is a footnote with $\LaTeX \vec{F_{tot}}$ inside [/fn]
+4. Testing footnote with $\LaTeX m$ that adds span. [fn] This is a footnote with $\LaTeX F_{tot}$ inside [/fn]
+:::
 
 ## HTML
 
@@ -617,5 +624,14 @@ Firstly, let's measure the direction of magnetic field from the  magnet.
 ::: Question
 1. Why does $B_z$ change when you move the magnet vertically?
 2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
+3. Testing footnote [fn] this is a footnote [/fn]
 :::
 ::::::
+
+::: Question
+with text that hangs out above?
+
+1. Why does $B_z$ change when you move the magnet vertically?
+2. At the point where you flipped the magnet, describe the difference you observe, and give a possible explanation.
+3. Testing footnote with $\LaTeX m$ that adds span [fn] this is a footnote [/fn]
+:::
