@@ -5,6 +5,11 @@
 
 <head>
 
+  <script
+  src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+  integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI="
+  crossorigin="anonymous"></script>
+  
   <!-- W3 CSS standards -->
   <link rel="stylesheet" href="static\css\w3.css">
   <link rel="stylesheet" href="theme.css">
@@ -36,12 +41,15 @@
   <!-- navbar -->
   <script src="static\scripts\nav.js"></script>
 
+  
+  
+
 
   <!-- The loading of KaTeX -->
-  <link rel="stylesheet" href="css\katex\katex.min.css">
-  <script src="static\css\katex\katex.min.js"></script>
+  <link rel="stylesheet" href="https://ilg-physics-ucsb.github.io/ManualSite/static/css\katex\katex.min.css">
+  <script src="https://ilg-physics-ucsb.github.io/ManualSite/static/css\katex\katex.min.js"></script>
   <!-- To automatically render math in text elements, include the auto-render extension: -->
-  <script src="static\css\katex\contrib\auto-render.min.js"></script>
+  <script src="https://ilg-physics-ucsb.github.io/ManualSite/static/css/katex/contrib/auto-render.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css"
     integrity="sha384-AfEj0r4/OFrOo5t7NnNe46zW/tFgW6x/bCJG8FqQCEo3+Aro6EYUG4+cU+KJWu/X" crossorigin="anonymous">
 
@@ -76,7 +84,7 @@
         onclick="w3_open()"><i class="fa fa-bars"></i></a>
       <div id='topnavtarget'>
       </div>
-      <div class='w3-dropdown-click w3-hide-medium w3-hide-large w3-right'>
+      <div class='w3-dropdown-click w3-hide-large w3-right'>
         <a onclick="dropdownlab()" class="w3-bar-item w3-button w3-left w3-hover-white w3-large theme-l1  w3-right"
           width='100%'><i class="fa fa-bookmark"></i></a>
       </div>
@@ -129,7 +137,14 @@
       </div>
       <!-- Main Content goes here -->
       <div data-toc id="TOC">
+
+        
+        
+
         <div w3-include-html="welcome.md" id="mdcontent"></div>
+    
+
+        
       </div>
     </div>
   </div>

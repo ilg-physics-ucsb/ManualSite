@@ -57,27 +57,7 @@ function htmltweaks() {
     }
   }
 
-  //Allows exercises to be collabsible
-  var coll = document.getElementsByClassName("collapsible");
-  for (i = 0; i < coll.length; i++) {
-    const start_height = coll[i].parentElement.previousElementSibling.style.maxHeight
-    coll[i].addEventListener("click", function () {
-      this.classList.toggle("active");
-      var content = this.parentElement.previousElementSibling;
-      if (content.style.maxHeight != start_height) {
-        content.style.maxHeight = start_height;
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-      this.parentElement.classList.toggle('preview-hide')
-      this.parentElement.classList.toggle('preview-show')
-      this.firstElementChild.classList.toggle('fa-chevron-up')
-      this.firstElementChild.classList.toggle('fa-chevron-down')
-      this.firstElementChild.classList.toggle('vshaker')
-
-    });
-
-  }
+ 
   //Allows for warnings to be toggled off
   var warn = document.getElementsByClassName("Warning");
   for (i = 0; i < warn.length; i++) {
@@ -119,6 +99,9 @@ function replace_tags() {
 
     fnoted = text[i].innerHTML.replaceAll(/\[fn\](.*?)\[\/fn\]/g, "<span class= 'tooltip'><sup>]</sup><span class ='tooltiptext'>$1</span></span>")
     text[i].innerHTML = fnoted
+
+    checked = text[i].innerHTML.replaceAll(/\[c\]/g, "<input type= 'checkbox'>")
+    text[i].innerHTML = checked
   }
 }
 
