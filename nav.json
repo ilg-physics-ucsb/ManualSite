@@ -7,32 +7,32 @@
     {
         "name": "Lab 0",
         "file": "lab0",
-        "showSmall": "true"
+        "showSmall": "false"
     },
     {
         "name": "Lab 1",
         "file": "lab1",
-        "showSmall": "true"
+        "showSmall": "false"
     },
     {
         "name": "Lab 2",
         "file": "lab2",
-        "showSmall": "true"
+        "showSmall": "false"
     },
     {
         "name": "Lab 3",
         "file": "lab3",
-        "showSmall": "true"
+        "showSmall": "false"
     },
     {
         "name": "Lab 4",
         "file": "lab4",
-        "showSmall": "true"
+        "showSmall": "false"
     },
     {
         "name": "Lab 5",
         "file": "lab5",
-        "showSmall": "true"
+        "showSmall": "false"
     },
     {
         "name": "Showcase",

@@ -1,13 +1,15 @@
+
 //Load markdown it and container plugin
 var md = window.markdownit()
 md.set({ html: true })
 var container = window.markdownitContainer;
 
 //Markdownit Container Utility
-const prepad = '<div class="w3-row"><div class="w3-col l2 m2 s12 placehold "> </div>'
-const postpad = '</div><div class="w3-col placehold l2 m2 s12 "> </div>'
+const prepad = '<div class="w3-col l2 m2 s12 placehold "> </div>'
+const postpad = '</div><div class="w3-col placehold l2 m2 s12 ">'
 const spacer = '<div class="w3-col l2 m2 s12 placehold "> </div>'
 var unset_id = 0
+var hider_id = 0
 
 //Helper functions//////////////////////////////////////////////////////////////////
 
@@ -16,7 +18,8 @@ function dv(classes, id = '', cls = false) {
     if (cls) {
         closer = '</div>'
     }
-    return '<div id ="' + id + '" class ="' + classes.join(' ') + '" >' + closer
+
+    return '<div id ="' + id + '" class ="' + classes.join(' ')  + '" >' + closer
 }
 
 //creates a half-width numbered blurb with linkable name
@@ -42,26 +45,24 @@ function blurb(tokens, idx, regmatch, type) {
 //creates full width collapsible
 function collapsible(tokens, idx, regmatch, type) {
     ///process variables
-    const spacer = '<div class="w3-col l2 m2 s12 placehold "> </div>'
     var LTR = type.charAt(0) + type.charAt(1)
     ///form div
     var m = tokens[idx].info.trim().match(regmatch);
     if (tokens[idx].nesting === 1) {    // This places an opening tag
         label = md.utils.escapeHtml(m[1]).trim();
         if (label == '') {
-            label = 'unset_' + unset_id
+            label = `unset_${unset_id}`
             unset_id++;
         }
-        return dv(['w3-row'], id = LTR + '-' + label) + dv(['w3-card', type], id = LTR + '_' + label)
-            + `<header class="w3-container"><h3>` + type + '</h3></header>' +
-            dv(["w3-container", "slideopen"])
+        return `${dv(['ac', type, 'w3-card'], id = LTR + '_' + label)}<input class="ac-input" id="L${LTR}_${label}" name="L${LTR}_${label}" type="checkbox" /> <label class="ac-label" for="L${LTR}_${label}">${type}</label><article class="ac-text w3-container">`
+        
     } else {                                               // This places a closing tag
-        return `</div><footer class="w3-container preview-hide"><button type="button" class="collapsible"><i class="fa fa-chevron-down vshaker"></i></button> </footer></div></div>`
+        return `</article></div>`
 
     }
 }
 
-//Note Box maker
+//Note Box Makers
 
 function quicknote(tokens, idx, type, extra = '') {
 
@@ -79,13 +80,18 @@ function hidernote(tokens, idx, type, extra = '') {
     var m = tokens[idx].info.trim().match(/^Hider(.*)$/);
     if (tokens[idx].nesting === 1) {
         label = md.utils.escapeHtml(m[1]).trim();
-        return dv(['w3-row']) + spacer + dv(["w3-col", "s12 m8 l8", "w3-center"]) + dv(["w3-card", type, extra]) +
-            '<header class="w3-container"> <h3> ' + label + '</h3> </header>' + dv(['w3-container', 'slideopen'])
+        return dv(['w3-row']) + spacer + dv(["w3-col", "s12 m8 l8", "w3-center"]) + dv(["w3-card", 'ac', type, extra]) +
+            ' <input class="ac-input" id=Hide_' + hider_id +
+            ' name=Hide_' + hider_id +
+            ' type="checkbox" /><label class="ac-label" for=Hide_' + hider_id + '>'+
+            label
+            +'</label><article class="ac-text w3-container">'
     } else {
         // This places a closing tag
-        return `</div><footer class="w3-container preview-hide"><button type="button" class="collapsible"><i class="fa fa-chevron-down vshaker"></i></button> </footer> </div></div>`
-            + spacer + "</div>"
+        hider_id+=1;
+        return '</article></div></div>'  + spacer + "</div>"
     }
+    
 }
 
 //Figure cards
@@ -133,6 +139,23 @@ function vid(tokens, idx) {
     }
 }
 
+//Blank Card
+function card(tokens, idx, regmatch, type, title=''){
+    var m = tokens[idx].info.trim().match(regmatch);
+    if (tokens[idx].nesting === 1) {
+        if(type==''){
+            type = md.utils.escapeHtml(m[1]).trim().split(' ').shift()
+            }
+        if(title==''){
+        title = md.utils.escapeHtml(m[1]).trim().split(' ').slice(1).join(' ')
+        }
+        // opening tag
+        return  dv(['w3-card', type])+ '<header class="w3-container">'+  title + '</header><div class="w3-container">';
+
+    } else {
+        return '</div></div>'
+}
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -229,14 +252,13 @@ md.use(container, 'Video', {
 
 md.use(container, 'Materials', {
     render: function (tokens, idx) {
-        if (tokens[idx].nesting === 1) {
+        return card(tokens,idx, /^Materials(.*)$/, "Materials","<h3> Materials Needed </h3>")
+    }
+})
 
-            // opening tag
-            return '<div class="Materials w3-card"><header class="w3-container"><h3>Materials Needed: </h3></header><div class="w3-container">';
-
-        } else {
-            return '</div></div>'
-        }
+md.use(container, 'Card', {
+    render: function (tokens, idx) {
+        return card(tokens,idx, /^Card(.*)$/, '','')
     }
 })
 
@@ -297,13 +319,11 @@ md.use(container, 'row', {
 
 
 
-
 //Rendererfunc
 function doRendering(md_text) {
     var markdown = md_text;
     return md.render(markdown);
 }
-
 
 
 // Parse Markdown
