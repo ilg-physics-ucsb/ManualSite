@@ -629,7 +629,7 @@ Firstly, let's measure the direction of magnetic field from the  magnet.
 ::::::
 
 
-::::::Figure
+::::::Figure named 
 Firstly, let's measure the direction of magnetic field from the  magnet.
 **Measurement steps:**
 1. Put your phone on the table and open the phyphox app and go to “magnetometer”. You can see there are three plots, representing $B_x$,  $B_y$ and $B_z$.
@@ -637,7 +637,7 @@ Firstly, let's measure the direction of magnetic field from the  magnet.
 3. Hold the magnet above the magnetomer, with one flat side facing up. Move it up and down above the magnetometer.
 4.  Now flip the magnet over, and repeat the motion.
 5.  Stop recording to view the collected data. 
-::: Simulation long-wire2
+::: Simulation long-wire25
 <iframe src="https://kapawlak.github.io/PhDemoJS/Apps/BiotSavart_Current_Line/Biot_Savart.html" width= "100%" height="800" style="border:none;"></iframe>
 :::
 ::: Question
@@ -649,3 +649,11 @@ Firstly, let's measure the direction of magnetic field from the  magnet.
 # This is another part!
 
 does the text render inside or outside?
+:::Question
+This is text
+- it has
+- an unordered
+- list inside
+
+Does it show correctly now?
+:::

@@ -233,6 +233,7 @@ ul, ol {
 .Question{
   background-color: #009688;
   color: white;
+  text-align: center;
  }
 .Question::before {
   counter-increment: question;
@@ -241,6 +242,14 @@ ul, ol {
   position: absolute;
   top: -0.5em;
   left:calc(50% - 3.6em); 
+}
+.Question ul{
+  display: inline-block!important;
+  text-align: left!important;
+  max-width: 60%;
+}
+.Question ul li{
+  padding: 5px 0px!important;
 }
 .Question ol{ 
   list-style-type: lower-alpha!important;
@@ -258,6 +267,8 @@ ul, ol {
 .Question::after{
   display: none;
 }
+
+
 
 /*********************************************************************************/
 /* Note box formats */
