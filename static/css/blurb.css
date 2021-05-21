@@ -147,16 +147,19 @@ ul, ol {
   counter-increment:exercise;
   content:  " "counter(exercise);
 }
-.Exercise > .w3-container > ol{
+.Exercise > .w3-container > ol, .Exercise > .w3-container > ul{
   margin: 0px 2em;
 }
-.Exercise > .w3-container > ol > li{
+.Exercise > .w3-container > ol > li, .Exercise > .w3-container > ul > li{
   margin: 20px 1em;
 }
 
 .Exercise hr{
   border-top: 1px solid #999999;
 }
+
+
+
 /*********************************************************************************/
 /* Simulation box formats */
 .Simulation{  
