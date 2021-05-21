@@ -305,6 +305,16 @@ ul, ol {
     box-shadow: 0px 0px;
   }
 
+
+  .Note ul, .Note ol{
+    display: inline-block!important;
+    text-align: left!important;
+    max-width: 60%;
+  }
+  .Note ul li, .Note ol li{
+    padding: 5px 0px!important;
+  }
+
 /*********************************************************************************/
 /* Warning box formats */
 .Warning{
